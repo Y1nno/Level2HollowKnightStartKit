@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 50
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 2186447189918398178}
   - component: {fileID: 8174048844810726096}
   - component: {fileID: 7765533160265324408}
+  - component: {fileID: 4020566498142274683}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -194,13 +195,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee,
+  m_Sprite: {fileID: 6002263820543710485, guid: f376ec58e6a84344ea163d18f07e7dae,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.28, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -241,7 +242,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2.55}
+  m_Size: {x: 20, y: 60}
   m_Direction: 0
 --- !u!114 &1084988212310301361
 MonoBehaviour:
@@ -255,8 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d7236d6bb6d455a86c2e9d3db2c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mover
-  acceleration: 10
-  maximumSpeed: 5
+  acceleration: 500
+  maximumSpeed: 1000
 --- !u!114 &2186447189918398178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a700a7fc0abd049f3a299069844758f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jumper
-  jumpImpulse: 5
+  jumpImpulse: 300
   jumpBonusModifier: 1
   doubleJumpAllowed: 0
   jumpSound: {fileID: 8300000, guid: 18bcfad34550f49018c430b746ef8c1a, type: 3}
@@ -300,7 +301,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -312,6 +313,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &4020566498142274683
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7204115071694406157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9bf26a1ead69ad4fa7940a3a6b9570a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7504973778050804796
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,3 +401,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56f4546c478ccb4ba6bc27d4c794f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  cameraFollower: {fileID: 0}
