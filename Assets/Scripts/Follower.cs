@@ -18,6 +18,9 @@ public class Follower : MonoBehaviour
     [Tooltip("Don't edit! This just shows our current offset from the followed object")]
     public Vector3 offset;
 
+    [Tooltip("Whether or not the position should flip when the target does")]
+    public bool flipH = false;
+
 
 
 
@@ -47,6 +50,14 @@ public class Follower : MonoBehaviour
             Mathf.Infinity,
             Time.fixedDeltaTime
         );
+
+        if (flipH)
+        {
+            Vector2 localPos = transform.localPosition;
+            localPos.x = Mathf.Abs(localPos.x) * (target.transform.localScale.x > 0 ? 1 : -1);
+            transform.localPosition = localPos;
+        }
+
     }
 
     public void SetTarget(Transform newTarget)

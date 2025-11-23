@@ -16,7 +16,7 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: c9bf26a1ead69ad4fa7940a3a6b9570a, type: 2}
   idleSprite: {fileID: 6002263820543710485, guid: f376ec58e6a84344ea163d18f07e7dae,
     type: 3}
-  colliderSize: {x: 20, y: 60}
+  colliderSize: {x: 20, y: 65}
   colliderOffset: {x: 0, y: 0}
   moveSpeed: 100
   jumpForce: 30

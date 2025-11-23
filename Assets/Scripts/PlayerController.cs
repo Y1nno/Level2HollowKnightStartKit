@@ -6,17 +6,21 @@ using UnityEngine;
 [RequireComponent(typeof(Mover))]
 [RequireComponent(typeof(Jumper))]
 
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //these are all just references to the various components attached to this object to make our lives easier. We'll add more as we go!
     private Mover mover;
     private Jumper jumper;
+    private FireProjectile fireProjectile;
+    private PlayerCharacterSwapper swapper;
 
     void Start()
     {
         //Find all the componenets attached to this object and save them to references
         mover = gameObject.GetComponent<Mover>();
         jumper = gameObject.GetComponent<Jumper>();
+        fireProjectile = gameObject.GetComponent<FireProjectile>();
+        swapper = GetComponentInParent<PlayerCharacterSwapper>();
     }
 
     // Update is called once per frame
@@ -43,10 +47,19 @@ public class PlayerController: MonoBehaviour
         }
 
         //When Jumping
-        if ( Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) )
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             //If the jump key is pressed... jump!
             jumper.Jump();
         }
+        if (swapper.currentIndex == 1)
+        {
+            if (Input.GetKey(KeyCode.E) && fireProjectile.countdownTimer <= 0f)
+            {
+                fireProjectile.Fire();
+            }
+
+        }
+
     }
 }

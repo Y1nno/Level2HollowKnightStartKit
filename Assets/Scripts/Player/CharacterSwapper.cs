@@ -13,7 +13,7 @@ public class PlayerCharacterSwapper : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CapsuleCollider2D bodyCollider;
 
-    private int currentIndex = 0;
+    public int currentIndex = 0;
     private CharacterProfile Current => profiles != null && profiles.Length > 0
         ? profiles[currentIndex]
         : null;
@@ -72,6 +72,7 @@ public class PlayerCharacterSwapper : MonoBehaviour
         // Visuals
         if (animator != null && profile.animatorController != null)
             animator.runtimeAnimatorController = profile.animatorController;
+        animator.SetInteger("ProfileID", currentIndex);
 
         if (spriteRenderer != null && profile.idleSprite != null)
             spriteRenderer.sprite = profile.idleSprite;

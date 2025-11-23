@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2597c4ae9815c84f8298283ab6a384b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenTransition
+  cameraFollower: {fileID: 0}
   transitionTo: west
   startPoint: {fileID: 1180238766710782900}
-  exitDirection: {x: 10, y: 0}
+  exitDirection: {x: -10, y: 0}
   exitTime: 0.25
 --- !u!61 &5776331731320316828
 BoxCollider2D:

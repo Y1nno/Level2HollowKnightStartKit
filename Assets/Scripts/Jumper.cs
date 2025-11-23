@@ -23,18 +23,22 @@ public class Jumper : MonoBehaviour
     //Reference variable to attached Rigidbody2D
     private Rigidbody2D myRigidbody;
 
+    private PlayerCharacterSwapper swapper;
+
     // Start is called before the first frame update
     void Start()
     {
         //Store attached Rigidbody2D
         myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+
+        swapper = GetComponentInParent<PlayerCharacterSwapper>();
     }
 
     //Function that gets called whenever we need to jump
     public void Jump()
     {
         //If we are touching something... OR we are allowed to double jump AND have yet to do so
-        if (isOnGround == true || (doubleJumpAllowed == true && hasDoubleJumped == false))
+        if (isOnGround == true || (doubleJumpAllowed == true && hasDoubleJumped == false) && swapper.currentIndex == 0)
         {
             //If we managed to jump while in the air, make sure to mark that we've now double jumped
             if(isOnGround == false)
