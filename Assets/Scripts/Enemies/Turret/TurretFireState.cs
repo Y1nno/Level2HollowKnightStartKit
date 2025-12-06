@@ -19,7 +19,7 @@ public class TurretFireState : EnemyState
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
         {
-            turretTop.GetComponent<FireProjectile>().Fire();
+            //turretTop.GetComponent<FireProjectile>().Fire();
             turretTop.GetComponent<Animator>().SetTrigger("Fire");
             machine.ChangeState(trackingState.stateId);
         }
