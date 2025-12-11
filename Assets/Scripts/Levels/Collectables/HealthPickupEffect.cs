@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class HealthPickupEffect : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
+        if (!collision.CompareTag("Player")) { return; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        collision.gameObject.GetComponent<Destructible>().increaseMaxHealth();
     }
 }

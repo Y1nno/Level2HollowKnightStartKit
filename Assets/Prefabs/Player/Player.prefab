@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 4646028759421573196}
   - component: {fileID: 571232858355464243}
   - component: {fileID: 2717613270757978877}
+  - component: {fileID: 3524491774742961582}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -475,6 +476,7 @@ MonoBehaviour:
   maximumHitPoints: 3
   faction: 1
   soundOnHit: {fileID: 0}
+  invunerableTimeAfterHit: 1
   healthPanel: {fileID: 0}
 --- !u!114 &2717613270757978877
 MonoBehaviour:
@@ -489,6 +491,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   respawnChildName: RespawnPoint
+--- !u!114 &3524491774742961582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7204115071694406157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36d281ad4165a14988a5de360fd05d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 1
 --- !u!1 &7504973778050804796
 GameObject:
   m_ObjectHideFlags: 0

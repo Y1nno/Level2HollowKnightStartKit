@@ -11,7 +11,11 @@ public class Destructible : MonoBehaviour
     [Tooltip("Which sound to play when this Destructible is damaged")]
     public AudioClip soundOnHit;
 
+    public float invunerableTimeAfterHit = 1f;
+    private float timeOfLastHit = 0f; 
+
     public GameObject healthPanel = null;
+    private DamageFlasher damageFlash = null;
 
     //Variable to store our current hitpoints
     private int hitPoints;
@@ -25,19 +29,26 @@ public class Destructible : MonoBehaviour
         {
             healthPanel.GetComponent<HealthManager>().UpdateHealthUI(hitPoints, maximumHitPoints);
         }
+        damageFlash = GetComponent<DamageFlasher>();
        
     }
 
     //Function to inflict damage on this Destructible
-    public void TakeDamage( int damageAmount )
+    public void TakeDamage(int damageAmount)
     {
-        //Modify hitpoints by the damage amount
-        ModifyHitPoints(-damageAmount);
-
-        //If we have a sound and an audio source, play sound
-        if(soundOnHit != null && GetComponent<AudioSource>())
+        if (Time.time >= timeOfLastHit + invunerableTimeAfterHit)
         {
-            GetComponent<AudioSource>().PlayOneShot(soundOnHit);
+            timeOfLastHit = Time.time;
+            //Modify hitpoints by the damage amount
+            ModifyHitPoints(-damageAmount);
+
+            //If we have a sound and an audio source, play sound
+            if (soundOnHit != null && GetComponent<AudioSource>())
+            {
+                GetComponent<AudioSource>().PlayOneShot(soundOnHit);
+            }
+
+            damageFlash.TriggerDamageFlash();
         }
     }
 
@@ -77,4 +88,12 @@ public class Destructible : MonoBehaviour
     {
         return hitPoints;
     }
+
+    public void increaseMaxHealth(int amount = 1)
+    {
+        maximumHitPoints += amount;
+        ModifyHitPoints(amount);
+
+    }
+
 }
