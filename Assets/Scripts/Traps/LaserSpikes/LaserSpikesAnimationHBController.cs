@@ -4,6 +4,7 @@ using System;
 public class LaserSpikesAnimationHBController : MonoBehaviour
 {
     private Collider2D damageTrigger;
+    public GameObject lightToChange;
 
 
     void Start()
@@ -24,6 +25,10 @@ public class LaserSpikesAnimationHBController : MonoBehaviour
     public void ChangeHB(int changeTo)
     {
         damageTrigger.enabled = Convert.ToBoolean(changeTo);
+        if (lightToChange != null)
+        {
+            lightToChange.SetActive(Convert.ToBoolean(changeTo));
+        }
     }
 
 

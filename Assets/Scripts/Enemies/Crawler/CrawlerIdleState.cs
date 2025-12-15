@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WoodieIdleState : EnemyState
+public class CrawlerIdleState : EnemyState
 {
     public float endAfter = 1f;
     public string PatrolStateID = "Patrol";
@@ -12,7 +12,7 @@ public class WoodieIdleState : EnemyState
 
     public override void Enter(EnemyStateMachine machine)
     {
-
+        machine.animator.Play("Idle");
     }
 
     public override void Tick(EnemyStateMachine machine)
@@ -21,6 +21,9 @@ public class WoodieIdleState : EnemyState
         if (internalTimer >= endAfter)
         {
             internalTimer = 0;
+            Vector3 scale = machine.gameObject.transform.localScale;
+            scale.x *= -1f;
+            machine.gameObject.transform.localScale = scale;
             machine.ChangeState(PatrolStateID);
 
         }

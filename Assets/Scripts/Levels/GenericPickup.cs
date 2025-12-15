@@ -33,6 +33,11 @@ public class GenericPickup : MonoBehaviour
         //Turn off our collider
         GetComponent<Collider2D>().enabled = false;
 
+        if (gameObject.transform.Find("Freeform Light 2D"))
+        {
+            gameObject.transform.Find("Freeform Light 2D").gameObject.SetActive(false);
+        }
+
         //Turn off our sprite renderer
         if (GetComponent<SpriteRenderer>())
         {

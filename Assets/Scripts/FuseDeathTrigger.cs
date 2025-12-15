@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class FuseDeathTrigger : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public EnemyStateMachine LaserDoorStateMachine;
 
-    // Update is called once per frame
-    void Update()
+    void OnDestroy()
     {
-        
+        LaserDoorStateMachine.ChangeState("Off");
     }
 }

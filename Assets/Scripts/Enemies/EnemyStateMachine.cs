@@ -14,6 +14,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     // Lookup table: ID -> state
     private Dictionary<string, EnemyState> _stateLookup;
+    public Animator animator;
 
     [HideInInspector] public Transform player;
     
@@ -28,6 +29,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         ChangeState(startingStateId);
         player = Player.Instance.gameObject.transform.GetChild(0).GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()

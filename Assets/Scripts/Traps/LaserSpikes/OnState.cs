@@ -19,7 +19,9 @@ public class OnState : EnemyState
 
     public override void Tick(EnemyStateMachine machine)
     {
-        if (internalLengthTimer <= 0f || infinite)
+        if (infinite) { return; }
+        
+        if (internalLengthTimer <= 0f)
         {
             machine.ChangeState(offState.stateId);
             return;

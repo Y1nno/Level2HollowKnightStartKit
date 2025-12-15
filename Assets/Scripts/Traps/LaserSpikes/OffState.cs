@@ -17,6 +17,10 @@ public class OffState : EnemyState
     {
         internalTimer += offStateLength;
         //Debug.Log("Off");
+        if (gameObject.transform.Find("Freeform Light 2D"))
+        {
+            gameObject.transform.Find("Freeform Light 2D").gameObject.SetActive(false);
+        }
     }
 
     public override void Tick(EnemyStateMachine machine)
