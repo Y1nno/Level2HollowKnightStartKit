@@ -61,6 +61,11 @@ public class Destructible : MonoBehaviour
         ModifyHitPoints(healAmount);
     }
 
+    public void HealToFull()
+    {
+        ModifyHitPoints(maximumHitPoints - hitPoints);
+    }
+
     //Base function that modifies hitpoints by any value (positive or negative)
     private void ModifyHitPoints( int modAmount )
     {
@@ -85,8 +90,14 @@ public class Destructible : MonoBehaviour
     //Function called on death
     private void Die()
     {
-        //Destroy this game object
-        Destroy(gameObject);
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        if (rb)
+        {
+            rb.simulated = false;
+        }
+        
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<Animator>().enabled = false;
     }
 
     //A Getter function to tell other scripts what our current health is

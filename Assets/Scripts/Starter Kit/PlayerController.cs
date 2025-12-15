@@ -15,9 +15,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCharacterSwapper swapper;
     private Animator animator;
     private Rigidbody2D myRigidbody;
-    private KickManager kicker;
 
-    public GameObject kickManager;
 
     void Start()
     {
@@ -28,7 +26,6 @@ public class PlayerController : MonoBehaviour
         swapper = GetComponentInParent<PlayerCharacterSwapper>();
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        kicker = kickManager.GetComponent<KickManager>();
     }
 
     // Update is called once per frame
@@ -80,13 +77,6 @@ public class PlayerController : MonoBehaviour
                 fireProjectile.Fire();
             }
 
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.E) && kicker.cooldownTimer <= 0f)
-            {
-                kicker.Fire();
-            }
         }
 
         if (!jumper.GetIsOnGround() && myRigidbody.linearVelocity.y <= 0 && !animator.GetBool("Falling"))

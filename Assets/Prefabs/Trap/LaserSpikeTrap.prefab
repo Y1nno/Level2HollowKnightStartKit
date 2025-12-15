@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f3b12f4d1abb479ea88948330f18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  lightToChange: {fileID: 0}
+  lightToChange: {fileID: 1451300193885132343}
 --- !u!95 &4491148039991583763
 Animator:
   serializedVersion: 7
@@ -485,7 +485,7 @@ MonoBehaviour:
     m_TrimEdge: 2
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 1
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 2
   m_PreviousEdgeProcessing: 1
