@@ -11,6 +11,7 @@ public class FireProjectile : MonoBehaviour
     public float minimumCountdown = 0.5f;  // time between shots
     public float cooldownTimer = 0f;
     public bool canShoot = false;
+    public bool flipFireDirection = false;
 
     void Update()
     {
@@ -22,10 +23,27 @@ public class FireProjectile : MonoBehaviour
     {
         if (!canShoot) { return; }
 
+        Quaternion newRot;
+        if (flipFireDirection)
+        {
+            newRot = transform.rotation * Quaternion.Euler(0, 0, 180f);
+        }
+        else
+        {
+            newRot = transform.rotation;
+        }
 
-        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, newRot);
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = transform.right * projectileSpeed;
+
+        if (flipFireDirection)
+        {
+            rb.linearVelocity = -transform.right * projectileSpeed;
+
+        }
+        else { rb.linearVelocity = transform.right * projectileSpeed; }
+
 
         cooldownTimer = minimumCountdown;
     }

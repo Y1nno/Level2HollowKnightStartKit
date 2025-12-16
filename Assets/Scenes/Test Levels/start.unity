@@ -150,12 +150,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &184817118 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6261148432866655279, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2062654158}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &197281398
 Mesh:
   m_ObjectHideFlags: 0
@@ -473,95 +467,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 877146922754617239}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1197909007 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4066549699020895059, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2062654158}
-  m_PrefabAsset: {fileID: 0}
---- !u!66 &1197909017 stripped
-CompositeCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7737389614360708765, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2062654158}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1197909019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197909007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
-  m_ShadowGroup: 0
-  m_Priority: 0
-  m_ComponentVersion: 5
-  m_HasRenderer: 0
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  m_ShapePathHash: 0
-  m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 1197909017}
-  m_ShadowShape2DProvider:
-    rid: 3316290161340580006
-  m_ShadowCastingSource: 2
-  m_ShadowMesh:
-    m_Mesh: {fileID: 197281398}
-    m_LocalBounds:
-      m_Center: {x: -0.67988586, y: -4.1138916, z: 0}
-      m_Extent: {x: 15.23764, y: 11.886108, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 1197909017}
-  references:
-    version: 2
-    RefIds:
-    - rid: 3316290161340580006
-      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal,
-        asm: Unity.RenderPipelines.Universal.2D.Runtime}
-      data: 
---- !u!114 &1197909020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197909007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3485a4f7fbb134c4e8be7ff0f60b5fd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  maximumHitPoints: 3
-  faction: 1
-  soundOnHit: {fileID: 0}
-  invunerableTimeAfterHit: 1
-  healthPanel: {fileID: 0}
---- !u!212 &1593749674 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3572573321730851560, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2062654158}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2062654158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,31 +475,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 901864771739565982, guid: 4ed98efb83ed6b149bf4bf05e221190f,
+    - target: {fileID: 822283518469947120, guid: 4ed98efb83ed6b149bf4bf05e221190f,
         type: 3}
-      propertyPath: spriteRenderer
+      propertyPath: m_ShadowMesh.m_Mesh
       value: 
-      objectReference: {fileID: 184817118}
-    - target: {fileID: 901864771739565982, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-        type: 3}
-      propertyPath: flashingDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 901864771739565982, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-        type: 3}
-      propertyPath: spriteRenderers.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 901864771739565982, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-        type: 3}
-      propertyPath: 'spriteRenderers.Array.data[0]'
-      value: 
-      objectReference: {fileID: 184817118}
-    - target: {fileID: 901864771739565982, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-        type: 3}
-      propertyPath: 'spriteRenderers.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1593749674}
+      objectReference: {fileID: 197281398}
     - target: {fileID: 1011635633972005535, guid: 4ed98efb83ed6b149bf4bf05e221190f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -650,19 +535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6255524911800779544, guid: 4ed98efb83ed6b149bf4bf05e221190f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4066549699020895059, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1197909020}
-    - targetCorrespondingSourceObject: {fileID: 4066549699020895059, guid: 4ed98efb83ed6b149bf4bf05e221190f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1197909019}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ed98efb83ed6b149bf4bf05e221190f, type: 3}
 --- !u!1001 &877146922754617239
 PrefabInstance:

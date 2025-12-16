@@ -39,7 +39,7 @@ public class DamageFlasher : MonoBehaviour
     {
         if (spriteRenderers != null && spriteRenderers.Count > 0)
         {
-            Debug.Log("Damage Flash Triggered");
+            //Debug.Log("Damage Flash Triggered");
             StartCoroutine(FlashRoutine());
         }
     }
