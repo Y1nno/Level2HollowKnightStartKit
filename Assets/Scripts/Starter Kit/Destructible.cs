@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Destructible : MonoBehaviour
 {
@@ -90,14 +91,22 @@ public class Destructible : MonoBehaviour
     //Function called on death
     private void Die()
     {
+        List<string> tagsToDestroy = new List<string>() {"Player", "Fuse"};
+        if (tagsToDestroy.Contains(gameObject.tag))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         if (rb)
         {
             rb.simulated = false;
         }
-        
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        if (gameObject.GetComponent<SpriteRenderer>() != null) { gameObject.GetComponent<SpriteRenderer>().enabled = false; }
         gameObject.GetComponent<Animator>().enabled = false;
+        gameObject.GetComponent<ShadowCaster2D>().enabled = false;
     }
 
     //A Getter function to tell other scripts what our current health is

@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private PlayerCharacterSwapper swapper;
     private Animator animator;
     private Rigidbody2D myRigidbody;
+    [HideInInspector]
+    public bool dialogueActive = false;
+
+    public GameObject dialogueManager;
 
 
     void Start()
@@ -28,10 +32,30 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
         animator.SetBool("Running", false);
+
+        if (!jumper.GetIsOnGround() && myRigidbody.linearVelocity.y <= 0 && !animator.GetBool("Falling"))
+        {
+            animator.SetBool("Falling", true);
+        }
+
+        if (animator.GetBool("Falling") && jumper.GetIsOnGround())
+        {
+            animator.SetBool("Falling", false);
+            animator.SetTrigger("Land");
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && dialogueActive == true)
+        { 
+            dialogueManager.GetComponent<SpriteSpeakerIndex>().ContinueDialogue();
+        }
+
+        if (dialogueActive) { return; }
         
         //Moving Right
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -77,17 +101,6 @@ public class PlayerController : MonoBehaviour
                 fireProjectile.Fire();
             }
 
-        }
-
-        if (!jumper.GetIsOnGround() && myRigidbody.linearVelocity.y <= 0 && !animator.GetBool("Falling"))
-        {
-            animator.SetBool("Falling", true);
-        }
-
-        if (animator.GetBool("Falling") && jumper.GetIsOnGround())
-        {
-            animator.SetBool("Falling", false);
-            animator.SetTrigger("Land");
         }
     }
 }

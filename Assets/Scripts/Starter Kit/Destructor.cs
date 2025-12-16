@@ -14,20 +14,33 @@ public class Destructor : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Destructible destructible = collision.gameObject.GetComponent<Destructible>();
+        TurretDestructible turretDestructible = null;
 
-        if (destructible && destructible.faction != faction)
+        if (destructible == null)
+        {
+            turretDestructible = collision.gameObject.GetComponent<TurretDestructible>();
+        }
+
+        if (destructible != null && destructible.faction != faction)
         {
             destructible.TakeDamage(damage);
-
-            Rigidbody2D rb = collision.rigidbody;
-
-            if (rb != null)
-            {
-                Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
-
-                rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
-            }
+            ApplyKnockback(collision);
+        }
+        else if (turretDestructible != null && turretDestructible.faction != faction)
+        {
+            turretDestructible.TakeDamage(damage);
+            ApplyKnockback(collision);
         }
     }
 
+    private void ApplyKnockback(Collision2D collision)
+    {
+        Rigidbody2D rb = collision.rigidbody;
+
+        if (rb != null)
+        {
+            Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
+            rb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
+        }
+    }
 }

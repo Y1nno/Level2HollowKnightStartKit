@@ -96,9 +96,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.41037738, b: 0.41037738, a: 1}
-  m_Intensity: 3.01
+  m_FalloffIntensity: 1
+  m_Color: {r: 0.6509804, g: 0.12156863, b: 0.12156863, a: 1}
+  m_Intensity: 2.26
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00024986267, y: -0.00009918213, z: 0}
-    m_Extent: {x: 19.90045, y: 19.9009, z: 0}
+    m_Center: {x: -0.00025177002, y: 0.00005340576, z: 0}
+    m_Extent: {x: 168.10034, y: 168.10074, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 19.4
+  m_ShapeLightFalloffSize: 167.6
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f3b12f4d1abb479ea88948330f18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  light: {fileID: 3008933599692476704}
+  lightToChange: {fileID: 0}
 --- !u!95 &4491148039991583763
 Animator:
   serializedVersion: 7
@@ -408,7 +408,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7045458593173705860}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -541,7 +541,7 @@ MonoBehaviour:
     m_TrimEdge: 1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 1
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 1
   m_PreviousEdgeProcessing: 1

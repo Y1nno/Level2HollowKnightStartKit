@@ -1,0 +1,124 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
+public class TurretDestructible : MonoBehaviour
+{
+    [Tooltip("How much health this Destructible should have in total")]
+    public int maximumHitPoints = 3;
+    [Tooltip("Which faction this Destructible is. Destructors don't damage Destructibles of the same faction.")]
+    public int faction = 1;
+    [Tooltip("Which sound to play when this Destructible is damaged")]
+    public AudioClip soundOnHit;
+
+    public float invunerableTimeAfterHit = 1f;
+    private float timeOfLastHit = 0f;
+
+    public GameObject healthPanel = null;
+    private DamageFlasher damageFlash = null;
+
+    //Variable to store our current hitpoints
+    private int hitPoints;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Set our hitpoints to our default when the game starts
+        hitPoints = maximumHitPoints;
+        if (healthPanel != null)
+        {
+            healthPanel.GetComponent<HealthManager>().UpdateHealthUI(hitPoints, maximumHitPoints);
+        }
+        damageFlash = GetComponent<DamageFlasher>();
+
+    }
+
+    //Function to inflict damage on this Destructible
+    public void TakeDamage(int damageAmount)
+    {
+        if (Time.time >= timeOfLastHit + invunerableTimeAfterHit)
+        {
+            timeOfLastHit = Time.time;
+            //Modify hitpoints by the damage amount
+            ModifyHitPoints(-damageAmount);
+
+            //If we have a sound and an audio source, play sound
+            if (soundOnHit != null && GetComponent<AudioSource>())
+            {
+                GetComponent<AudioSource>().PlayOneShot(soundOnHit);
+            }
+
+            if (damageFlash != null)
+            {
+                damageFlash.TriggerDamageFlash();
+            }
+        }
+    }
+
+    //Function to heal damage on this Destructible
+    public void Heal(int healAmount)
+    {
+        ModifyHitPoints(healAmount);
+    }
+
+    public void HealToFull()
+    {
+        ModifyHitPoints(maximumHitPoints - hitPoints);
+    }
+
+    //Base function that modifies hitpoints by any value (positive or negative)
+    private void ModifyHitPoints(int modAmount)
+    {
+        //Add the modAmount (which could be positive or negative) to the current hitpoints
+        hitPoints += modAmount;
+
+        //Make sure we don't go past our maximum hitpoints
+        hitPoints = Mathf.Min(maximumHitPoints, hitPoints);
+
+        //If we are at or below 0, die
+        if (hitPoints <= 0)
+        {
+            Die();
+        }
+
+        if (healthPanel != null)
+        {
+            healthPanel.GetComponent<HealthManager>().UpdateHealthUI(hitPoints, maximumHitPoints);
+        }
+    }
+
+    //Function called on death
+    private void Die()
+    {
+        List<string> tagsToDestroy = new List<string>() { "Player", "Fuse" };
+        if (tagsToDestroy.Contains(gameObject.tag))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        if (rb)
+        {
+            rb.simulated = false;
+        }
+
+        gameObject.transform.Find("Turret Top").GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.transform.Find("Turret Top").GetComponent<Animator>().enabled = false;
+        gameObject.GetComponent<ShadowCaster2D>().enabled = false;
+    }
+
+    //A Getter function to tell other scripts what our current health is
+    public int GetHitPoints()
+    {
+        return hitPoints;
+    }
+
+    public void increaseMaxHealth(int amount = 1)
+    {
+        maximumHitPoints += amount;
+        ModifyHitPoints(amount);
+    }
+
+}

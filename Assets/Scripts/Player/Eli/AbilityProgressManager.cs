@@ -26,6 +26,7 @@ public class AbilityProgressManager : MonoBehaviour
         switch (abilityName.ToLower())
         {
             case "doublejump":
+                //Debug.Log("Changing double jump to " + newValue);
                 jumper.ChangeDoubleJump(newValue);
                 canEliDoubleJump = jumper.doubleJumpAllowed;
                 break;

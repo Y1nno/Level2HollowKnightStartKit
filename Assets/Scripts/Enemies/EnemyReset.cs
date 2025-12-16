@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyDistanceReset2D : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class EnemyDistanceReset2D : MonoBehaviour
         if (hp != null) hp.HealToFull();
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<Animator>().enabled = true;
+        gameObject.GetComponent<ShadowCaster2D>().enabled = true;
     }
 
     private bool IsVisibleToCamera()

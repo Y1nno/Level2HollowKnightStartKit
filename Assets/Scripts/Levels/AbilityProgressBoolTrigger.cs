@@ -16,17 +16,27 @@ public class AbilityProgressBoolTrigger : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
             return;
-
+        //Debug.Log("AbilityProgressBoolTrigger triggered for ability ID: " + id + " with value: " + value.ToString());
         var mgr = collision.gameObject.transform.parent.GetComponent<AbilityProgressManager>();
 
         switch (value)
         {
             case NullableBool.True:
-                mgr.fusionatorParts += 1;
-                if (fusionatorPartsNeeded <= mgr.fusionatorParts && !mgr.canOliviaShoot)
+                if (id == "shooting" && mgr.fusionatorParts < fusionatorPartsNeeded)
+                {
+                    mgr.fusionatorParts += 1;
+                    //Debug.Log("Collected a Fusionator part. Total parts: " + (mgr.fusionatorParts));
+
+                    if(fusionatorPartsNeeded <= mgr.fusionatorParts && !mgr.canOliviaShoot)
+                    {
+                        mgr.ChangeAbilityBool(id, true);
+                    }
+                }
+                else if (id == "doublejump")
                 {
                     mgr.ChangeAbilityBool(id, true);
                 }
+                
                 break;
 
             case NullableBool.False:

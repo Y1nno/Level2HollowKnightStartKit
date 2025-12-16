@@ -25,6 +25,7 @@ public class StateSwapperTriggerArea : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D _other)
     {
         
+        //Debug.Log("Trigger Entered");
         if (_other.CompareTag("Player") && stateMachine)
         {
             //Debug.Log("Player Entered Turret Area");
