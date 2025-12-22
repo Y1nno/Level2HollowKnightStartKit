@@ -14,6 +14,16 @@ public class PlayerCharacterSwapper : MonoBehaviour
     [SerializeField] private CapsuleCollider2D bodyCollider;
 
     public int currentIndex = 0;
+    public float swapCooldown = 0.5f;
+    private float lastSwapTime = 0;
+
+    [Header("Audio")]
+    public AudioManager audioManager;
+    public AudioClip swapSound;
+    public float lowerPitch = 0.8f;
+    public float upperPitch = 1.2f;
+    public float volume = 1.0f;
+
     private CharacterProfile Current => profiles != null && profiles.Length > 0
         ? profiles[currentIndex]
         : null;
@@ -41,7 +51,7 @@ public class PlayerCharacterSwapper : MonoBehaviour
            
         if (profiles == null || profiles.Length <= 1) return;
 
-        if (Input.GetKeyDown(swapKey))
+        if (Input.GetKeyDown(swapKey) && Time.time >= swapCooldown + lastSwapTime)
         {
             SwapToNextProfile();
         }
@@ -68,6 +78,12 @@ public class PlayerCharacterSwapper : MonoBehaviour
             return;
         }
 
+        // Audio
+        if (audioManager != null && swapSound != null)
+        {
+            audioManager.PlaySound(swapSound, lowerPitch, upperPitch, volume);
+        }
+
         // Visuals
         if (animator != null && profile.animatorController != null)
             animator.runtimeAnimatorController = profile.animatorController;
@@ -84,5 +100,9 @@ public class PlayerCharacterSwapper : MonoBehaviour
             bodyCollider.offset = profile.colliderOffset;
         }
         //Debug.Log($"[Swapper] Applied profile '{profile.characterName}'.");
+
+        
+
+        lastSwapTime = Time.time;
     }
 }
